@@ -1,0 +1,35 @@
+<div class="page-container">
+  <header>
+    <button mat-icon-button class="menu-button" (click)="sidenav.toggle()">
+      <mat-icon aria-label="Menu">{{ isMenuOpen ? "menu_open" : "menu" }}</mat-icon>
+    </button>
+
+    <a class="title" routerLink="/">
+      <span>Easy Camp</span>
+    </a>
+  </header>
+  <mat-sidenav-container class="sidenav-container" (click)="closeSideNav()">
+    <mat-sidenav
+      #sidenav
+      autoFocus="false"
+      mode="over"
+      [(opened)]="isMenuOpen"
+      class="sidenav"
+    >
+      @for (page of pages; track page){
+      <a
+        class="sidenav-option"
+        routerLink="{{ page.route }}"
+        routerLinkActive="active"
+      >
+        {{ page.name }}
+      </a>
+      }
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,19 @@
+.add-user{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .field{
+    padding-bottom: 15px;
+  }
+}
+
+@media (min-width: 426px) {
+  .add-user{
+    align-items: center;
+
+    .field{
+      width: 300px !important;
+    }
+  }
+}
