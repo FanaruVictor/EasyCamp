@@ -1,1 +1,27 @@
-<p>add-feedback works!</p>
+<form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" class="add-feedback-form">
+  <h1>Add Feedback</h1>
+  <mat-form-field >
+    <mat-label>Role</mat-label>
+    <mat-select formControlName="user">
+      @for (user of users; track user){
+      <mat-option [value]="user.id">{{user.name}} - {{user.role}}</mat-option>
+      }
+    </mat-select>
+    <mat-hint
+      *ngIf="
+        feedbackForm.controls['user'].invalid &&
+        (feedbackForm.controls['user'].dirty || feedbackForm.controls['user'].touched)
+      "
+      class="alert"
+    >
+      <span *ngIf="feedbackForm.controls['user'].errors?.['required']">
+        Role is required.
+      </span>
+    </mat-hint>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Feedback</mat-label>
+    <textarea matInput formControlName="feedback"></textarea>
+  </mat-form-field>
+  <button type="button" mat-stroked-button (click)="onSubmit()">Send Feedback</button>
+</form>

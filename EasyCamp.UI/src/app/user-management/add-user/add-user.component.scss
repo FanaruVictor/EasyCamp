@@ -1,19 +1,16 @@
-.add-user{
+.add-user-form{
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  .field{
-    padding-bottom: 15px;
-  }
+  gap: 15px;
 }
 
 @media (min-width: 426px) {
-  .add-user{
+  .add-user-form{
     align-items: center;
 
     .field{
-      width: 300px !important;
+      width: 350px !important;
     }
   }
 }

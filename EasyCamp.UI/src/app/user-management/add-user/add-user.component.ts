@@ -8,29 +8,36 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class AddUserComponent {
   userForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
+    firstName: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    lastName: new FormControl('', [Validators.required, Validators.minLength(3)]),
     role: new FormControl('', Validators.required),
   });
-
 
   roles = [
     {
       value: 1,
-      viewValue: 'Explorator',
+      viewValue: 'Cub',
     },
     {
       value: 2,
-      viewValue: 'Senior',
+      viewValue: 'Venture',
     },
     {
       value: 3,
-      viewValue: 'Lider',
+      viewValue: 'Explorer',
     },
     {
       value: 4,
-      viewValue: 'Adult Volunteer',
+      viewValue: 'Rover',
     },
+    {
+      value: 5,
+      viewValue: 'Leader',
+    },
+    {
+      value: 6,
+      viewValue: 'Adult Volunteer',
+    }
   ];
 
   onSubmit() {
